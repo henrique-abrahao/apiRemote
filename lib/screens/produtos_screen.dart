@@ -21,7 +21,9 @@ class _ListProdutosState extends State<ListProdutos> {
 
     response = await http
         .get('http://sistemaagely.com.br/getArquivo?file=produtos.json');
-    return json.decode(response.body);
+
+    return json.decode(utf8.decode(response.bodyBytes));
+
   }
 
   @override
@@ -29,7 +31,7 @@ class _ListProdutosState extends State<ListProdutos> {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            "Categories",
+            "Produtos",
             style: TextStyle(color: Colors.white),
           ),
           centerTitle: true,
